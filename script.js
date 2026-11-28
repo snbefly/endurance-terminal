@@ -634,6 +634,7 @@ const passwordIncorrectSound = new Audio("sfx/passwordincorrect.wav");
 const loadingSound = new Audio("sfx/loading.wav");
 const musicSound = new Audio("sfx/music.wav");
 musicSound.volume = 0.8;
+const discordSound = new Audio("sfx/discord_ping_sound_effect.mp3");
 
 let promptFrame = 0;
 bootElement.textContent = "НАЖМИТЕ ЛЮБУЮ КЛАВИШУ ДЛЯ ПОДКЛЮЧЕНИЯ " + SPINNER[promptFrame];
@@ -708,6 +709,10 @@ function checkPassword(typed) {
     messageElement.classList.add("denied");
     if (typed === "музыка" || typed === "music") {
       musicSound.play();
+    }
+    if (typed === "discord" || typed === "дискорд") {
+      discordSound.currentTime = 0;
+      discordSound.play();
     }
     if (ATTEMPT_MESSAGES.hasOwnProperty(wrongAttempts)) {
       messageElement.textContent = ATTEMPT_MESSAGES[wrongAttempts];
